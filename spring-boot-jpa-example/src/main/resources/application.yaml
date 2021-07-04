@@ -1,1 +1,11 @@
-
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/JPA_EXAMPLE
+    username: root
+    password: root
+  jpa:
+    hibernate:
+      ddl-auto: create
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl # Property is used to honor the name provided with @Column, @Entity or @Table. Basically, will honor sensitivity of the name.
+    show-sql: true
