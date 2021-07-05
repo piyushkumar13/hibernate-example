@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import lombok.AllArgsConstructor;
@@ -51,5 +52,18 @@ public class Employee {
 
     @OneToMany(mappedBy = "refemployee", cascade = CascadeType.ALL)
     private List<Address> address;
+
+
+    /* refer page : https://www.logicbig.com/tutorials/java-ee-tutorial/jpa/one-to-many-foreign-key-mapping.html
+    * Good page explains on how to use JoinColumn without bidirectional relationship.
+    * */
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "REF_EMPLOYEE_ID")
+    private List<Subordinate> subordinates;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "EMP_CAB_MAPPING", joinColumns = {@JoinColumn(name = "EMP_ID", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "CAB_ID", referencedColumnName = "id")})
+    private List<Cab> cabs;
 
 }

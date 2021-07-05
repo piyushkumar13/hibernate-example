@@ -40,6 +40,14 @@ public class JpaWithExplicitEMForRelationships implements ApplicationRunner {
         Address homeAddress = Address.builder().buildingName("Sopara Building").city("Bengaluru").state("Karnataka").build();
         Address officeAddress = Address.builder().buildingName("Raj Bhavan Road").city("Bengaluru").state("Karnataka").build();
 
+        Subordinate subordinate1 = Subordinate.builder().name("ABC").build();
+        Subordinate subordinate2 = Subordinate.builder().name("XYZ").build();
+        Subordinate subordinate3 = Subordinate.builder().name("PQR").build();
+
+        Cab cab1 = Cab.builder().cabType("Innova").build();
+        Cab cab2 = Cab.builder().cabType("Desire").build();
+        Cab cab3 = Cab.builder().cabType("Etios").build();
+
 //        Employee employee = Employee.builder()
 //                .name("Piyush")
 //                .companyName("ABC Company")
@@ -51,14 +59,20 @@ public class JpaWithExplicitEMForRelationships implements ApplicationRunner {
 
         Employee employee = new Employee();
         employee.setName("Piyush");
-        employee.setName("ABC Company");
-        employee.setName("Engineer");
+        employee.setCompanyName("ABC Company");
+        employee.setDesignation("Engineer");
         employee.setAddress(asList(homeAddress, officeAddress));
         employee.setProject(project1);
         employee.setVehicles(asList(vehicle1, vehicle2, vehicle3));
+        employee.setSubordinates(asList(subordinate1, subordinate2, subordinate3));
+        employee.setCabs(asList(cab1, cab2, cab3));
 
         homeAddress.setRefemployee(employee);
         officeAddress.setRefemployee(employee);
+
+        cab1.setEmployees(asList(employee));
+        cab2.setEmployees(asList(employee));
+        cab3.setEmployees(asList(employee));
 
         entityManager.persist(employee);
     }
