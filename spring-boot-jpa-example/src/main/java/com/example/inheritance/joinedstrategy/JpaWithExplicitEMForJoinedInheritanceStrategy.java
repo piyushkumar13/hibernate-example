@@ -1,4 +1,4 @@
-package com.example.inheritance.singletablestrategy;
+package com.example.inheritance.joinedstrategy;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -14,14 +14,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 
 @SpringBootApplication
-public class JpaWithExplicitEMForInheritance implements ApplicationRunner {
+public class JpaWithExplicitEMForJoinedInheritanceStrategy implements ApplicationRunner {
 
     @PersistenceContext
     private EntityManager entityManager;
 
     public static void main(String[] args) {
 
-        SpringApplication.run(JpaWithExplicitEMForInheritance.class, args);
+        SpringApplication.run(JpaWithExplicitEMForJoinedInheritanceStrategy.class, args);
     }
 
     @Override
