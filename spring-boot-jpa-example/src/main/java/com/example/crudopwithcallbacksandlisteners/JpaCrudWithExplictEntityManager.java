@@ -1,10 +1,5 @@
-package com.example.crudoperation;
+package com.example.crudopwithcallbacksandlisteners;
 
-import static java.util.Arrays.asList;
-
-import java.util.Date;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;

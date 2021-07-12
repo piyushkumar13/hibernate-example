@@ -1,4 +1,4 @@
-package com.example.crudoperation;
+package com.example.crudopwithcallbacksandlisteners;
 
 import javax.persistence.Embeddable;
 import lombok.AllArgsConstructor;
