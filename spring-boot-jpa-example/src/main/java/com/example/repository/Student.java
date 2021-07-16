@@ -1,6 +1,7 @@
 package com.example.repository;
 
 import java.util.Date;
+import java.util.Objects;
 import java.util.Set;
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
@@ -16,6 +17,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.NamedQuery;
+import javax.persistence.PrePersist;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
@@ -83,61 +85,13 @@ public class Student {
     @CollectionTable(name = "EXTRA", joinColumns = @JoinColumn(name = "STUDENT_ID"))
     private Set<Extra> extras;
 
-//    @PrePersist
-//    public void validationForPrePersist(){
-//        System.out.println("==== PrePersist Callback Starts ====");
-//        System.out.println("Validating name");
-//        Objects.requireNonNull(this.name);
-//        System.out.println("Validating dob");
-//        Objects.requireNonNull(this.dob);
-//        System.out.println("==== PrePersist Callback Ends ====");
-//    }
-//
-//    @PreUpdate
-//    public void validationForPreUpdate(){
-//        System.out.println("==== PreUpdate Callback Starts ====");
-//        System.out.println("Validating name");
-//        Objects.requireNonNull(this.name);
-//        System.out.println("Validating dob");
-//        Objects.requireNonNull(this.dob);
-//        System.out.println("==== PreUpdate Callback Ends ====");
-//    }
-//
-//    @PreRemove
-//    public void validationForPreRemove(){
-//        System.out.println("==== PreRemove Callback Starts ====");
-//        System.out.println("Validating name");
-//        Objects.requireNonNull(this.name);
-//        System.out.println("Validating dob");
-//        Objects.requireNonNull(this.dob);
-//        System.out.println("==== PreRemove Callback Ends ====");
-//    }
-//
-//    @PostPersist
-//    public void logMsgPostPersist(){
-//        System.out.println("==== PostPersist Callback Starts ====");
-//        System.out.println("The object is successfully persisted" + this);
-//        System.out.println("==== PostPersist Callback Ends ====");
-//    }
-//
-//    @PostUpdate
-//    public void logMsgPostUpdate(){
-//        System.out.println("==== PostUdpate Callback Starts ====");
-//        System.out.println("The object is successfully updated" + this);
-//        System.out.println("==== PostUpdate Callback Ends ====");
-//    }
-//
-//    @PostLoad
-//    public void logMsgPostLoad(){
-//        System.out.println("==== PostLoad Callback Starts ====");
-//        System.out.println("The object is successfully removed" + this);
-//        System.out.println("==== PostLoad Callback Ends ====");
-//    }
-//
-//    @PostRemove
-//    public void logMsgPostRemove(){
-//        System.out.println("==== PostRemove Callback Starts ====");
-//        System.out.println("The object is successfully fetched" + this);
-//        System.out.println("==== PostRemove Callback Ends ====");
-//    }
+    @PrePersist
+    public void validationForPrePersist(){
+        System.out.println("==== PrePersist Callback Starts ====");
+        System.out.println("Validating name");
+        Objects.requireNonNull(this.name);
+        System.out.println("Validating dob");
+        Objects.requireNonNull(this.dob);
+        System.out.println("==== PrePersist Callback Ends ====");
+    }
 }
