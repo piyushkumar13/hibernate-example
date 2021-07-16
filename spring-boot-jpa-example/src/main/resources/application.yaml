@@ -9,3 +9,10 @@ spring:
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl # Property is used to honor the name provided with @Column, @Entity or @Table. Basically, will honor sensitivity of the name.
     show-sql: true
+    properties:
+      hibernate:
+        # Was getting this error failed to lazily initialize a collection of role, could not initialize proxy - no Session
+        # When calling method SimpleRepositoryService#getById() in JpaRepositoriesApplication
+        # One of the solution was to use attribute fetch = FetchType.EAGER but thats not good solution. I want lazy loading. So, better would be set propert enable_lazy_load_no_trans=true
+        # check this post : https://www.netsurfingzone.com/hibernate/failed-to-lazily-initialize-a-collection-of-role-could-not-initialize-proxy-no-session/
+        enable_lazy_load_no_trans: true
